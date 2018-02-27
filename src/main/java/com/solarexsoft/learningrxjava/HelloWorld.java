@@ -69,7 +69,11 @@ public class HelloWorld {
                 .filter(s -> !s.equals(' '))
                 .groupBy(s -> s)
                 .subscribe(s -> s.count().subscribe(it -> System.out.println(s.getKey() + "\t" + it)));
-
-
+        System.out.println("-----------------");
+        char[] chars = str.toCharArray();
+        Observable.range(0, chars.length)
+                .map(i -> chars[i])
+                .subscribe(System.out::println);
+        System.out.println("-----------------");
     }
 }
