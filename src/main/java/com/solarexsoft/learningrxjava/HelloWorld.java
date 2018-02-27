@@ -3,11 +3,17 @@ package com.solarexsoft.learningrxjava;
 import com.google.gson.Gson;
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
 import io.reactivex.flowables.GroupedFlowable;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by houruhou on 25/09/2017.
@@ -54,7 +60,16 @@ public class HelloWorld {
                         });
                     }
                 });
-        Observable.just(null)
-                .subscribe(System.out::println, Throwable::printStackTrace);
+//        Observable.just(null)
+//                .subscribe(System.out::println, Throwable::printStackTrace);
+        System.out.println("-----------------");
+        String str = "this is a test to statistics the frequency of the charactes";
+        List<Character> collect = str.chars().mapToObj(s -> (char) s).collect(Collectors.toList());
+        Observable.fromIterable(collect)
+                .filter(s -> !s.equals(' '))
+                .groupBy(s -> s)
+                .subscribe(s -> s.count().subscribe(it -> System.out.println(s.getKey() + "\t" + it)));
+
+
     }
 }
