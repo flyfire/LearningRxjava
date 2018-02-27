@@ -54,5 +54,7 @@ public class HelloWorld {
                         });
                     }
                 });
+        Observable.just(null)
+                .subscribe(System.out::println, Throwable::printStackTrace);
     }
 }
