@@ -75,5 +75,6 @@ public class HelloWorld {
                 .map(i -> chars[i])
                 .subscribe(System.out::println);
         System.out.println("-----------------");
+
     }
 }

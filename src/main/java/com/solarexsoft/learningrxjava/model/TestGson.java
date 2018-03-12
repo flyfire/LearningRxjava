@@ -1,4 +1,4 @@
-package com.solarexsoft.learningrxjava;
+package com.solarexsoft.learningrxjava.model;
 
 import com.google.gson.Gson;
 
