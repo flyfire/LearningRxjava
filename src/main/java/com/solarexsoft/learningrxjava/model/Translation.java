@@ -104,4 +104,11 @@ public class Translation {
             this.err_no = err_no;
         }
     }
+
+    @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        sb.append(content.out);
+        return sb.toString();
+    }
 }
