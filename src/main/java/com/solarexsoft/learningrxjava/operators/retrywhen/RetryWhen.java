@@ -7,15 +7,10 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Action;
-import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import java.io.IOException;
-import java.net.UnknownHostException;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -76,21 +71,10 @@ public class RetryWhen {
                 System.out.println("onComplete");
             }
         });
-        /*.subscribe(new Consumer<Translation>() {
-            @Override
-            public void accept(Translation translation) throws Exception {
-                System.out.println(translation);
-            }
-        }, new Consumer<Throwable>() {
-            @Override
-            public void accept(Throwable throwable) throws Exception {
-                throwable.printStackTrace();
-            }
-        }, new Action() {
-            @Override
-            public void run() throws Exception {
-                System.out.println("onComplete");
-            }
-        });*/
+        try {
+            Thread.sleep(100000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
